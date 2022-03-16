@@ -33,7 +33,7 @@ void SingleLevelCache::load(const std::string &hexAddress, const int data) {
       this->_replacement_queue[indexSet].push(indexBlock);
       this->_cache.setBlocksWithAddress(addressBits, blocks);
       // Print what we did
-      std::cout << "Miss\n";
+      std::cout << "Filling\n";
       VariadicTable<std::string, unsigned short, unsigned short, int, int> vt({"Memory Address", "Set Index", "Block Index", "Data Before", "Data After"});
       vt.addRow(hexAddress, indexSet, indexBlock, std::get<3>(blockInfo), data);
       vt.print(std::cout);
@@ -46,8 +46,9 @@ void SingleLevelCache::load(const std::string &hexAddress, const int data) {
   this->_replacement_queue[indexSet].pop();
   this->_replacement_queue[indexSet].push(blockIndex);
   blocks[blockIndex].writeBlock(true, false, tag, data);
+  this->_cache.setBlocksWithAddress(addressBits, blocks);
   // Print what we did
-  std::cout << "Miss\n";
+  std::cout << "Replacing\n";
   VariadicTable<std::string, unsigned short, unsigned short, int, int> vt({"Memory Address", "Set Index", "Block Index", "Data Before", "Data After"});
   vt.addRow(hexAddress, indexSet, blockIndex, std::get<3>(blockInfo), data);
   vt.print(std::cout);
