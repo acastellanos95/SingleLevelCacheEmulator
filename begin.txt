@@ -1,0 +1,20 @@
+---------------------------------------------------------
+Memory cache emulator
+By: Andre Castellanos Aldama
+---------------------------------------------------------
+FIFO replacement, Write through
+Instrucciones: Seleccionamos el tamaño de direcciones en
+potencias de dos (tamaño de memoria), número de conjunt-
+os deseados en potencias de dos, maneras(ways) de número
+de bloques por conjunto en potencias de dos.
+
+Nota: El número de conjuntos no puede tener más direccio-
+nes que el tamaño de direcciones.
+
+Instrucciones:
+load address data
+read address
+
+Ejemplos:
+load AD 513
+read 3F
