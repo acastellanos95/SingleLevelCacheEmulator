@@ -84,7 +84,7 @@ void SingleLevelCache::read(const std::string &hexAddress) {
   std::cout << "take from main memory to cache\n";
   auto data = this->_mem.readFromMemoryWithAddress(addressBits, hexAddress);
   std::cout << "Writing to cache memory\n";
-  if(this->_replacement_queue[indexSet].size() < 4){ //if FIFO isn't full
+  if(this->_replacement_queue[indexSet].size() < _number_of_ways){ //if FIFO isn't full
     for(auto indexBlock = 0; indexBlock < _number_of_ways; ++indexBlock){
       auto blockInfo = blocks[indexBlock].readBlock();
       bool validBit = std::get<0>(blockInfo);
